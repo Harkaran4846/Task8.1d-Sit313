@@ -1,0 +1,23 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ccc;
+  }
+  
+  .header {
+    text-align: left;
+    margin-left: 20px;
+  }
+  
+  .link-container {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+  }
