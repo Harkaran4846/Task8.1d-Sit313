@@ -1,4 +1,4 @@
-// Home.js
+
 import React, { useState, useEffect } from 'react';
 import { db } from './utils/Firebase';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
@@ -13,7 +13,7 @@ function Home() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const querySnapshot = await getDocs(collection(db, 'posts')); // Fetch from 'posts'
+      const querySnapshot = await getDocs(collection(db, 'posts')); 
       const postsList = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
@@ -53,14 +53,13 @@ function Home() {
     setFilteredPosts(filtered);
   };
 
-  // Handle delete
   const handleDelete = async (id) => {
     await deleteDoc(doc(db, 'posts', id));
     setPosts(posts.filter((post) => post.id !== id));
     setFilteredPosts(filteredPosts.filter((post) => post.id !== id));
   };
 
-  // Handle expand post card
+
   const handleExpand = (id) => {
     setExpandedPostId(expandedPostId === id ? null : id);
   };
