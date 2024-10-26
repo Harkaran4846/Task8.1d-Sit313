@@ -1,4 +1,4 @@
-// Post.js
+
 import React, { useState } from 'react';
 import { db, storage } from './utils/Firebase';
 import { collection, addDoc } from 'firebase/firestore';
@@ -48,7 +48,7 @@ function NewPost() {
           }
         );
       } else {
-        resolve(""); // No image uploaded
+        resolve(""); 
       }
     });
   };
@@ -57,18 +57,18 @@ function NewPost() {
     event.preventDefault();
 
     try {
-      const uploadedImageUrl = await handleImageUpload(); // Upload image first
+      const uploadedImageUrl = await handleImageUpload();
 
       const post = {
         title,
-        description: postType === 'question' ? description : abstract, // For question use description, for article use abstract
-        tags: tags.split(',').map(tag => tag.trim()),  // Split and clean tags
+        description: postType === 'question' ? description : abstract, 
+        tags: tags.split(',').map(tag => tag.trim()), 
         postType,
-        imageUrl: uploadedImageUrl,  // Set the image URL
+        imageUrl: uploadedImageUrl,  
         createdAt: new Date(),
       };
 
-      await addDoc(collection(db, "posts"), post); // Save to Firestore
+      await addDoc(collection(db, "posts"), post); 
       setSuccessMessage('Post submitted successfully!');
     } catch (error) {
       console.error("Error adding post: ", error);
